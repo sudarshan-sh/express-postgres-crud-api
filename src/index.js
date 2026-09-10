@@ -2,6 +2,9 @@
 import express from "express";
 import cors from "cors";
 import pool from "./config/db.js";
+import userRoutes from "./routes/userRoutes.js";
+import errorHandling from "./middlewares/errorHandler.js";
+import createUserTable from "./data/createUserTable.js";
 
 const app = express();
 const port = process.env.PORT || 5001;
@@ -11,8 +14,13 @@ app.use(express.json());
 app.use(cors());
 
 // routes
+app.use("/api", userRoutes);
+
+// CREATE TABLE before starting server
+createUserTable();
 
 // error handling middleware
+app.use(errorHandling);
 
 // testing Postgres connection
 app.get("/", async (req, res) => {
