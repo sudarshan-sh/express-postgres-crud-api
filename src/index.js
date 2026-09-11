@@ -2,7 +2,7 @@
 import express from "express";
 import cors from "cors";
 import pool from "./config/db.js";
-import userRoutes from "./routes/userRoutes.js";
+import userRoutes from "./routes/userRoutes.js"; // import the routes you created
 import errorHandling from "./middlewares/errorHandler.js";
 import createUserTable from "./data/createUserTable.js";
 
@@ -13,7 +13,7 @@ const port = process.env.PORT || 5001;
 app.use(express.json());
 app.use(cors());
 
-// routes
+// +++++register the routes with the application+++++
 app.use("/api", userRoutes);
 
 // CREATE TABLE before starting server

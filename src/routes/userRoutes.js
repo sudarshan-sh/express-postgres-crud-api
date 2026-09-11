@@ -8,8 +8,9 @@ import {
 } from "../controllers/userController.js";
 import validateUser from "../middlewares/inputValidator.js";
 
-const router = express.Router();
+const router = express.Router(); // create a router instance
 
+// +++++define/create individual endpoints+++++
 router.post("/user", validateUser, createUser);
 router.get("/user", getAllUsers);
 router.get("/user/:id", getUserById);
